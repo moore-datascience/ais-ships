@@ -1,0 +1,6 @@
+
+library(shiny)
+
+shinyAppDir("app")
+
+

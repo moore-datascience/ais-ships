@@ -187,7 +187,7 @@ server <- function(input, output, session) {
             
             h2('Welcome!'),
             
-            p('The main goal of this application was to work with provided AIS data s.t. we can select a ship type, have that populate a selectInput for the name of the vessels of that type, and finally have that propegated to the leaflet map where it displays two points that represent the largest amount of distance traveled by that ship.')
+            p('The main goal of this application was to work with AIS data such that a user can select a ship type, have that populate a selectInput for the name of the vessels of that type, and finally have that propegated to the leaflet map where it displays two points that represent the largest amount of distance traveled by that ship for any given point in its recorded travel.')
             
           ),
           
@@ -201,9 +201,9 @@ server <- function(input, output, session) {
               
               p('Create a module based design with the most efficient possible means of communicating between them. To accomplish this I am using a method that I call "Sub-Nested Reactive Values".'),
               
-              p('Incorporate React into the app to offload as much UI rendering as possible. This is showcased in the bottom right hand corner, as well as the search functionality, which would have been extremely hard for Shiny to efficiently render all of the ship with their basic info.'),
+              p('Incorporate React using {reactR} babel transformation via module uiOutput to offload as much Shiny UI rendering as possible. This is showcased in the bottom right hand corner info section, as well as the React Portal based search functionality'),
               
-              p('Style the application using SCSS syntax and have that processed into machine readable css code using the {sass} package at the Global context level in production and at the server context level during development')
+              p('Style the application using SCSS syntax with {sass} enabled preprocessing to machine readable css code using the {sass} package at the Global context level in production and at the server context level during development')
               
             )
             
@@ -217,9 +217,11 @@ server <- function(input, output, session) {
               style = "height: 100%",
               a(class="ui green ribbon label", "Features"), 
               
-              p('Live code editting. It\'s extremely time consuming to have to re-launch a browser every time we want to check for a new style change. Using a method that is found in the server.R, which gets passed into the "mod_react_server()", we can modify css and React code, and simply refresh the browser to see our changes. '),
+              p('Smooth map experience, with special attention payed to not interupting a users set zoom unless the two points were outside of their current viewport.'),
               
-              p('Advanced JS -> Shiny -> JS communication can be found in the main search functionality. The text input sends a message to Shiny every time the search string is changed, R processes the in-memory data, and sends a formatted Json list back to React to handle rendering the output elements')
+              p('Effiecient Reactive flow throughout the application. Fine control over when to process React and Scss code allows for live code updates to core frontend components.'),
+              
+              p('Advanced JS -> Shiny -> JS communication can be found in the main search functionality to populate React based outputs that can be clicked to register \'select vessel\' event back in Shiny. The search input is meant to pair efficient R data filtering capabilities with Reacts powerful virtual DOM capabilities.')
               
             ),
             
@@ -228,7 +230,7 @@ server <- function(input, output, session) {
               style = "height: 100%",
               a(class="ui green ribbon label", "Challenges"), 
               
-              p('I had a really hard time implementing normal testing best practices in this app. I don\'t quite know for sure but my suspicion is that using React in this app has somehow interupted the way that {testthat} processes the shiny code.'),
+              p('I had a difficult time implementing normal testing best practices in this app. I don\'t quite know for sure but my suspicion is that using React in this app has somehow interupted the way that {testthat} processes the shiny code.'),
               
               p('Rendering React components requires that the target rendering div exists in the DOM before the React app is called. This required using a dedicated shiny module and a uiOutput to create a slight delay between the main UI being rendered and the React javascript being processed.')
               

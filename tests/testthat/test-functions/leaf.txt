@@ -1,0 +1,28 @@
+list(options = list(crs = list(crsClass = "L.CRS.EPSG3857", code = NULL, proj4def = NULL, projectedBounds = NULL, options = list()), zoomControl = FALSE), calls = list(list(method = "addTiles", args = list("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", NULL, "Sat", list(minZoom = 0, maxZoom = 18, tileSize = 256, subdomains = "abc", errorTileUrl = "", tms = FALSE, noWrap = FALSE, zoomOffset = 0, zoomReverse = FALSE, opacity = 1, zIndex = 1, detectRetina = FALSE))), 
+    list(method = "addProviderTiles", args = list("OpenStreetMap.DE", NULL, "Roads", list(errorTileUrl = "", noWrap = TRUE, detectRetina = FALSE, reuseTiles = TRUE))), list(method = "addTiles", args = list("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", NULL, "Topo", list(minZoom = 0, maxZoom = 18, tileSize = 256, subdomains = "abc", errorTileUrl = "", tms = FALSE, noWrap = FALSE, zoomOffset = 0, zoomReverse = FALSE, opacity = 1, zIndex = 1, detectRetina = FALSE))), 
+    list(method = "addLayersControl", args = list(c("Topo", "Roads", "Sat"), character(0), list(collapsed = TRUE, autoZIndex = TRUE, position = "topright")))))
+NULL
+NULL
+list(defaultWidth = "100%", defaultHeight = 400, padding = 0, viewer = list(defaultWidth = NULL, defaultHeight = NULL, padding = NULL, fill = TRUE, suppress = FALSE, paneHeight = NULL), browser = list(defaultWidth = NULL, defaultHeight = NULL, padding = NULL, fill = TRUE, external = FALSE), knitr = list(defaultWidth = NULL, defaultHeight = NULL, figure = TRUE))
+list(list(name = "leaflet-providers", version = "1.9.0", src = list(file = "/tmp/Rtmp06RI64"), meta = NULL, script = "leaflet-providers_1.9.0.js", stylesheet = NULL, head = NULL, attachment = NULL, package = NULL, all_files = FALSE), list(name = "leaflet-providers-plugin", version = "2.0.4.1", src = list(file = "/home/ian/.local/share/renv/cache/v5/R-4.1/x86_64-pc-linux-gnu/leaflet/2.0.4.1/e3d73becdeb92754d27172d278cbf61d/leaflet/htmlwidgets/plugins/leaflet-providers-plugin"), meta = NULL, script = "leaflet-providers-plugin.js", 
+    stylesheet = NULL, head = NULL, attachment = NULL, package = NULL, all_files = TRUE))
+NULL
+function (widget) 
+{
+    if (!is.null(widget$jsHooks$render)) {
+        widget$jsHooks$render <- lapply(widget$jsHooks$render, function(hook) {
+            if (is.list(hook)) {
+                hook$code <- sprintf(hookWrapperTemplate, paste(hook$code, collapse = "\n"))
+            }
+            else if (is.character(hook)) {
+                hook <- sprintf(hookWrapperTemplate, paste(hook, collapse = "\n"))
+            }
+            else {
+                stop("Unknown hook class ", class(hook))
+            }
+            hook
+        })
+    }
+    widget
+}
+list()

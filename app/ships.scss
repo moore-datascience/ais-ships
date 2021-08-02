@@ -1,0 +1,496 @@
+//
+//  file: ships.scss
+//  loc: /efs/Shiny/ais-ships/sass/
+//  date: 7.30.21
+//
+
+
+@import {'sass/univ-mixins.scss'}
+
+
+$mid-break: 900px;
+$sm-break: 700px;
+$xsm-break: 450px;
+
+
+$app-color1: #15354a;
+$app-color2: #a6d5e0;
+
+
+
+#mainmap {
+  height: 100vh !important;
+}
+
+
+#search_button {
+  position: absolute !important;
+  top: 60px;
+  right: 11px;
+  z-index: 2;
+  background-color: $app-color1;
+  color: $app-color2;
+  
+  @include mq($xsm-break){
+    
+    transform: scale(0.9);
+    top: 160px;
+    
+  }
+  
+}
+
+
+#info-button {
+  cursor: pointer;
+  position: absolute !important;
+  top: 25px;
+  left: 35px;
+  z-index: 5;
+  transform: scale(2);
+  
+  @include mq($sm-break){
+    
+    transform: scale(1.75);
+    top: 25px;
+    left: 25px;
+  
+  }
+  
+  @include mq($xsm-break){
+    
+    transform: scale(1.5);
+    top: 15px;
+    left: 15px;
+    
+  }
+  
+  .icon {
+     color: $app-color2;
+  }
+  
+}
+
+
+#welcome-modal {
+  
+  .icon {
+    color: $app-color1;
+  }
+  
+  .header {
+    @include flex(row,$jc:center)
+  }
+  
+}
+
+
+.about {
+  
+  &_title {
+    height: 100%;
+    @include flex(column,$jc: center,$ai: center)
+    
+    p {
+      max-width: 80ch;
+    }
+    
+  }
+  
+  &_desc {
+    height: 100%;
+    padding-left: 2em;
+    @include flex(column,$jc: center, $ai: center)
+    
+    p {
+      max-width: 60ch;
+    }
+    
+  }
+  
+  &_pkg {
+    padding: 0 2em;
+    height: 100%;
+    @include flex(column,$jc: center)
+    
+    span {
+      font-weight: bold;
+    }
+    
+    &_cont {
+      
+      height: 100%;
+      
+      @include flex(column,$ai: center,$jc: center,$gap:0.25em)
+      
+      @include mq(768px){
+      
+        padding-bottom: 1em;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+        span::after {
+          content: ", ";
+        }
+        
+        &::last-child::after {
+          content: "";
+        }
+        
+      }
+      
+    }
+  
+  }
+  
+  &_extra {
+    padding: 0 2em;
+    height: 100%;
+    @include flex(column,$jc: center,$ai: center)
+    
+    p {
+      max-width: 80ch;
+    }
+    
+  }
+  
+}
+
+
+
+.ships {
+  
+  position: absolute;
+  height: 100vh !important;
+  width: 100vw;
+  
+  &_title {
+    position: absolute;
+    top: 25px;
+    left: clamp(50px,13vw,100px);
+    border: solid $app-color1 1px;
+    border-radius: 1em;
+    background-color: white;
+    color: $app-color1;
+    padding: 1em 2em;
+    @include real-box-shadow()
+    z-index: 2;
+    @include flex(column, $jc: center, $ai: center)
+    
+    h3 {
+      font-size: clamp(1.2em,3vw,1.4em);
+    }
+    
+    
+    @include mq($sm-break){
+      
+      top: 10px;
+      right: 75px;
+      left: 75px;
+      flex-direction: row;
+      gap: 1em;
+      
+      h3 { 
+        margin-bottom: 0;
+      }
+      
+    }
+    
+    @include mq($xsm-break){
+      
+      top: 15px;
+      right: 60px;
+      left: 60px;
+      gap: 0.5em;
+      padding: 1em .25em;
+      
+      h3 { 
+        margin-bottom: 0;
+        font-size: clamp(0.75em,3vw,1.1em);
+      }
+      
+    }
+    
+  }
+  
+  
+  &_map {
+    
+    position: absolute;
+    inset: 0;
+    height: 100vh !important;
+    z-index: 1;
+    
+    > div {
+      
+      @include flex(row-reverse, $jc: center, $ai: center)
+    
+      @include mq($mid-break){
+        
+        @include flex(column, $jc: center, $ai: center)
+        
+      }
+      
+    }
+    
+  }
+  
+  
+  &_stats {
+    
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    left: 40%;
+    z-index: 2;
+    margin: 0 1em;
+    padding: 0 1em;
+    
+    .header {
+      text-align: center;
+      font-size: clamp(1em,2vw,1.6em) !important;
+      color: $app-color1;
+      
+      span {
+        @include flex(row, $jc: center, $ai: center, $gap: 0.25em)
+        
+        > div {
+          cursor: pointer;
+        }
+      }
+    }
+    
+    .card {
+      border: solid $app-color1 1px !important;
+      border-radius: 1em !important;
+      @include real-box-shadow()
+      
+    }
+    
+    @include mq($sm-break){
+      
+      top: 70px;
+      left: 25px;
+      right: 35px;
+      
+    }
+    
+    @include mq($xsm-break){
+      
+      left: 0px;
+      right: 0px;
+      margin: 0;
+      
+      .header {
+        text-align: center;
+        font-size: clamp(0.8em,3vw,1.2em);
+      
+      }
+      
+    }
+    
+  }
+  
+}
+
+
+#ships_map_react {
+  
+  background-color: whitesmoke;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  padding: 0.75em 2em;
+  z-index: 2;
+  border: solid $app-color1 1px;
+  border-radius: 1em;
+  width: auto;
+  min-width: 25%;
+  @include real-box-shadow()
+
+}
+
+
+.stats {
+  
+  @include flex(column,$jc: center)
+  
+  &_meters {
+    
+    text-align: center;
+    text-decoration: underline;
+    transform: scale(1.25);
+    
+  }
+  
+  &_vessel {
+    
+    @include flex(column,$jc: center,$ai: center)
+    
+  }
+  
+  
+}
+
+
+#react-search {
+
+  position: absolute;
+  inset: 25% 50%;
+  z-index: -1;
+  
+  .active {
+    
+    z-index: 2;
+    background-color: black;
+    
+  }
+  
+}
+
+
+.open {
+  
+  &-portal {
+    
+    position: absolute;
+
+    &-over {
+      
+      cursor: zoom-out;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1999;
+      background-color: rgba(black,0.6);
+      
+    }
+    
+    &-main {
+      
+      margin: 1em;
+      padding: 1em;
+      color: white;
+      position: fixed;
+      top: 10%;
+      left: 5%;
+      right: 5%;
+      bottom: 5%;
+      min-height: 25vh;
+      z-index: 2000;
+      @include flex(column, $ai: center)      
+      
+      @include mq(600px){
+        top: 5%;
+        left: 0;
+        right: 0;
+      
+        h2,h3,span {
+          transform: scale(0.8);
+        }
+        
+      }
+      
+    }
+    
+    
+    &-top {
+      position: relative;
+      top: 10px;
+      left: 0px;
+      right: 0px;
+      //border: solid black 1px;
+      @include flex(column,$jc: center)
+      margin-bottom: 0.9em;
+      
+    }
+    
+    &-cont {
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+      padding-top: 2em;
+      
+      &-item {
+        cursor: pointer;
+        min-height: 10vh;
+        background-color: white;
+        color: $app-color1;
+        border: solid $app-color2 1px;
+        border-radius: 0.5em;
+        padding: 1em 2em;
+        margin: 0.5em;
+        
+      }
+      
+    }
+    
+  }
+  
+}
+
+
+.search {
+  
+  &_item {
+    
+    display: grid;
+    grid-template-columns: 25% 75%;
+    gap: 1em;
+    
+    &_left {
+      @include flex(column,$jc:center,$ai:center)
+      
+      h3 {
+        font-weight: bold;
+      }
+      
+    }
+    
+    &_right {
+      display: grid;
+      grid-template-columns: 65% 35%;
+      
+      .general {
+        
+        @include flex(column,$jc:center,$ai:flex-start,$gap: 0.25em)
+        
+      }
+      
+      .info {
+        
+        @include flex(column,$jc:center,$ai:center)
+        
+      }
+      
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

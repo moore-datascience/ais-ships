@@ -1,0 +1,341 @@
+//
+//  file: ships_react.html
+//  loc: /efs/Shiny/ais-ships/
+//  date: 7.30.21
+//
+//
+
+
+<script defer type="text/babel">  
+
+  function ReactPortal({open, children, onClose, div_class}){
+    
+    React.useEffect(() => {
+      
+      if(open){document.body.style.overflow = 'hidden';}
+      if(!open){document.body.style.overflow = 'unset';}
+       
+    },[open]);
+    
+    if(!open) return null;
+    
+    const cl0 = div_class;
+    
+    return ReactDOM.createPortal(
+      
+      <div class={cl0}>
+      
+        <div class={`${cl0}-over`} onClick={onClose} />
+        
+        <div class={`${cl0}-main`}>
+          
+          {children}
+        
+        </div>
+      
+      </div>,
+      
+      document.getElementById('shiny-react-portal')
+    );
+    
+  };  
+
+
+  function SearchItem({item}){
+    
+    return(
+    
+      <div class='search_item'>
+      
+        <div class='search_item_left'>
+        
+          <h3>{item.name}</h3>
+          <span>{item.date}</span>
+          
+        </div>
+        
+        <div class='search_item_right'>
+        
+          <div class='general'>
+            <span>UID: {item.uid}</span>
+            <span>Distance: {item.distance}</span>
+            <span>Dimensions: {item.length} X {item.width}</span>
+          
+          </div>
+          
+          <div class='info'>
+          
+            <span>Speed: {item.speed} </span>
+            <span>Course: {item.course} </span>
+            <span>Heading: {item.heading} </span>
+          
+          </div>
+        
+        </div>
+      
+      </div>
+      
+    );
+    
+  }
+
+
+  function SearchArea({searchResults,setSearchResults,handleItemClick}){
+    
+    return(
+      
+      <div class='open-portal-cont'>
+        
+        {searchResults &&
+          
+          Object.keys(searchResults).map((code,index) => {
+            
+            const result = searchResults[code];
+            
+            if(index==0){
+              
+              console.log('First Result');
+              console.log(result);
+              
+            }
+            
+            return(
+              
+              <div 
+                class='open-portal-cont-item'
+                onClick={() => handleItemClick(result.uid)}
+                key={code}
+                >
+                
+                <SearchItem
+                  item={result}
+                />
+
+              </div>
+              
+            );
+            
+          })
+          
+        }
+      
+      </div>
+      
+    )
+    
+  }
+  
+
+  function ReactMain(){
+    
+    const [selType,setSelType] = React.useState('Cargo');
+    const [selVessel,setSelVessel] = React.useState(null);
+    const [selDistance,setSelDistance] = React.useState(null);
+    const [records,setRecords] = React.useState({});
+    const [showSearch,setShowSearch] = React.useState(false);
+    const [searchResults,setSearchResults] = React.useState(null);
+    const [searchText,setSearchText] = React.useState('');
+    const landRemoved = React.useRef(false);
+    
+    Shiny.addCustomMessageHandler("main_handler",function(message) {
+
+      console.log('test_handler triggered w/ message');
+      console.log(message);
+
+      if(message.type){
+        
+        console.log('Type Sent');
+        
+        const t0 = message.type;
+        
+        setSelType(t0);
+        
+      }
+      
+      if(message.distance) {
+        
+        const distance0 = message.distance;
+        const name0 = message.name;
+        const r0 = message.records;
+        
+        console.log('Distance Records recieved');
+        console.log('Distance: '+distance0);
+        console.log(r0);
+        
+        setSelVessel(name0);
+        setSelDistance(distance0);
+        setRecords(r0);
+        
+      }
+      
+      if(message.remove){
+      
+        const div0 = message.remove;
+        
+        const rem0 = landRemoved.current;
+
+        if(!rem0){
+          
+          console.log('Removing '+div0+' registered');
+        
+          const elem0 = document.getElementById(div0);
+          
+          elem0.remove();
+          
+          landRemoved.current = true;
+          
+        }
+        
+      }
+      
+      if(message.show){
+        
+        setShowSearch(true);
+        
+        
+      }
+      
+      if(message.no_results){
+        
+        setSearchResults(null);
+        
+      }
+      
+      if(message.results){
+        
+        console.log('Results');
+        const res0 = message.results;
+        
+        console.log(res0);
+        
+        setSearchResults(res0);
+        
+        
+      }
+      
+    });
+    
+    React.useEffect(() => {
+      
+      console.log('SearchArea text');
+      console.log(searchText);
+      
+      if(showSearch){
+        
+        var value0 = {
+          type: 'search_input',
+          text: searchText,
+          nonce: Math.random()
+        };
+  
+        Shiny.setInputValue("search_input", value0);
+      
+      } else {
+        setSearchText('');
+      }
+      
+    },[searchText,showSearch]);
+    
+    function handleItemClick(code){
+      
+      console.log('handleItemClick w/ code: '+code);
+      
+      setShowSearch(false);
+      
+      var value0 = {
+        type: 'item_clicked',
+        code: code,
+        nonce: Math.random()
+      };
+
+      Shiny.setInputValue("search_clicked", value0);
+      
+    }
+    
+    return(
+    
+      <div class='stats'>
+      
+        {selDistance &&
+          
+          <div class='stats_meters'>
+            
+            <h4>{selDistance} Meters</h4>
+          
+          </div>
+          
+        }
+        
+        {Object.keys(records).length>0 &&
+        
+          <div class='stats_vessel'>
+          
+            <span>{selType} - {selVessel}</span>
+            <span>{records.destination[0]}</span>
+            
+          </div>
+          
+        }
+        
+        <ReactPortal 
+          open={showSearch} 
+          onClose={() => setShowSearch(false)}
+          div_class = 'open-portal'>
+          
+          <div class='open-portal-top'>
+          
+            <h2>Search for "{selType}" Ships</h2>
+          
+            <input 
+              type='text'
+              onChange={e => setSearchText(e.target.value)}
+            />
+          
+          </div>
+          
+          <SearchArea 
+            searchResults={searchResults}
+            setSearchResults={setSearchResults}
+            handleItemClick={handleItemClick}
+          />
+          
+        </ReactPortal>
+        
+      </div>
+      
+    );
+    
+  }
+  
+  
+  ReactDOM.render(
+    <ReactMain />,
+    document.getElementById('ships_map_react')
+  );
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

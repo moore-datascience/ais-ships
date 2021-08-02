@@ -1,0 +1,229 @@
+{
+  "input": {
+    "map-mainmap_bounds": {
+      "north": 55.8714585924341,
+      "east": 21.07177734375,
+      "south": 55.5837783424292,
+      "west": 21.07177734375
+    },
+    "map-mainmap_center": {
+      "lng": 21.07177734375,
+      "lat": 55.7278834257731
+    },
+    "map-mainmap_groups": "Sat",
+    "map-mainmap_zoom": 11,
+    "search_button": 0
+  },
+  "output": {
+    "map-mainmap": {
+      "x": {
+        "options": {
+          "crs": {
+            "crsClass": "L.CRS.EPSG3857",
+            "code": null,
+            "proj4def": null,
+            "projectedBounds": null,
+            "options": {
+
+            }
+          },
+          "zoomControl": false
+        },
+        "calls": [
+          {
+            "method": "addTiles",
+            "args": [
+              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+              null,
+              "Sat",
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addProviderTiles",
+            "args": [
+              "OpenStreetMap.DE",
+              null,
+              "Roads",
+              {
+                "errorTileUrl": "",
+                "noWrap": true,
+                "detectRetina": false,
+                "reuseTiles": true
+              }
+            ]
+          },
+          {
+            "method": "addTiles",
+            "args": [
+              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+              null,
+              "Topo",
+              {
+                "minZoom": 0,
+                "maxZoom": 18,
+                "tileSize": 256,
+                "subdomains": "abc",
+                "errorTileUrl": "",
+                "tms": false,
+                "noWrap": false,
+                "zoomOffset": 0,
+                "zoomReverse": false,
+                "opacity": 1,
+                "zIndex": 1,
+                "detectRetina": false
+              }
+            ]
+          },
+          {
+            "method": "addLayersControl",
+            "args": [
+              [
+                "Sat",
+                "Topo",
+                "Roads"
+              ],
+              [
+
+              ],
+              {
+                "collapsed": true,
+                "autoZIndex": true,
+                "position": "topright"
+              }
+            ]
+          },
+          {
+            "method": "addMiniMap",
+            "args": [
+              null,
+              null,
+              "bottomleft",
+              150,
+              150,
+              19,
+              19,
+              -5,
+              false,
+              false,
+              false,
+              true,
+              false,
+              true,
+              {
+                "color": "#ff7800",
+                "weight": 1,
+                "clickable": false
+              },
+              {
+                "color": "#000000",
+                "weight": 1,
+                "clickable": false,
+                "opacity": 0,
+                "fillOpacity": 0
+              },
+              {
+                "hideText": "Hide MiniMap",
+                "showText": "Show MiniMap"
+              },
+              [
+
+              ]
+            ]
+          }
+        ],
+        "setView": [
+          [
+            55.728045,
+            21.072115
+          ],
+          11,
+          [
+
+          ]
+        ]
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "leaflet-providers",
+          "version": "1.9.0",
+          "src": {
+            "href": "leaflet-providers-1.9.0"
+          },
+          "meta": null,
+          "script": "leaflet-providers_1.9.0.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": false
+        },
+        {
+          "name": "leaflet-providers-plugin",
+          "version": "2.0.4.1",
+          "src": {
+            "href": "leaflet-providers-plugin-2.0.4.1"
+          },
+          "meta": null,
+          "script": "leaflet-providers-plugin.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        },
+        {
+          "name": "leaflet-minimap",
+          "version": "3.3.1",
+          "src": {
+            "href": "leaflet-minimap-3.3.1"
+          },
+          "meta": null,
+          "script": [
+            "Control.MiniMap.min.js",
+            "Minimap-binding.js"
+          ],
+          "stylesheet": "Control.MiniMap.min.css",
+          "head": null,
+          "attachment": null,
+          "package": null,
+          "all_files": true
+        }
+      ]
+    },
+    "modalInfo": {
+      "html": "<!--SHINY.SINGLETON[a7dfba25377f2c3abd3323cb1aba67f021ede00c]-->\n<head>\n  <script src=\"shiny.semantic/shiny-semantic-modal.js\"><\/script>\n<\/head>\n<!--/SHINY.SINGLETON[a7dfba25377f2c3abd3323cb1aba67f021ede00c]-->\n<div id=\"welcome-modal\" class=\"ui modal medium\">\n  \n  <div class=\"content\">\n    <h2 class=\"ui header\">\n      <i class=\"ship icon\"><\/i>\n      <div class=\"content\">AIS_Demo<\/div>\n    <\/h2><style>#lzwjq { display: grid; height: 100%; grid-template-rows: auto auto auto; grid-template-columns: 2fr 1fr; grid-template-areas: 'title title' 'desc pkg' 'extra extra'; grid-gap: 25px }<\/style>\n<style>@media screen and (max-width: 768px) { #lzwjq { display: grid; height: 100%; grid-template-rows: 150px auto auto; grid-template-columns: 100%; grid-template-areas: 'title' 'desc' 'extra' 'pkg'; grid-gap: 25px } }<\/style>\n<div id=\"lzwjq\">\n  <div id=\"lzwjq-title\" style=\"grid-area: title; \"><div class=\"about_title\">\n      <h2>Welcome to my AIS data demo application<\/h2>\n      <p>The main goal of this application was to work with provided AIS data s.t. we can select a ship type, have that populate a selectInput for the name of the vessels of that type, and finally have that propegated to the leaflet map where it displays two points that represent the largest amount of distance traveled by that ship.<\/p>\n    <\/div><\/div>\n  <div id=\"lzwjq-desc\" style=\"grid-area: desc; \"><div class=\"about_desc\">\n      <div class=\"ui raised segment\" style=\"height: 100%\">\n        <a class=\"ui green ribbon label override\">Goals<\/a>\n        <p>Create a module based design with the most efficient possible means of communicating between them. To accomplish this I am using a method that I call \"Sub-Nested Reactive Values\".<\/p>\n        <p>Incorporate React into the app to offload as much UI rendering as possible. This is showcased in the bottom right hand corner, as well as the search functionality, which would have been extremely hard for Shiny to efficiently render all of the ship with their basic info.<\/p>\n        <p>Style the application using SCSS syntax and have that processed into machine readable css code using the {sass} package at the Global context level in production and at the server context level during development<\/p>\n      <\/div>\n    <\/div><\/div>\n  <div id=\"lzwjq-extra\" style=\"grid-area: extra; \"><div class=\"about_extra\">\n      <div class=\"ui raised segment\" style=\"height: 100%\">\n        <a class=\"ui green ribbon label\">Features<\/a>\n        <p>Live code editting. Its extremely time consuming to have to re-launch a browser every time we want to check for a new style change. Using a method that is found in the server.R, which gets passed into the \"mod_react_server()\", we can modify css and React code, and simply refresh the browser to see our changes. <\/p>\n        <p>Advanced JS -&gt; Shiny -&gt; JS communication can be found in the main search functionality. The text input sends a message to Shiny every time the search string is changed, R processes the in-memory data, and sends a formatted Json list back to React to handle rendering the output elements<\/p>\n      <\/div>\n      <div class=\"ui raised segment\" style=\"height: 100%\">\n        <a class=\"ui green ribbon label\">Challenges<\/a>\n        <p>I had a really hard time implementing normal testing best practices in this app. I don't quite know for sure but my suspicion is that using React in this app has somehow interupted the way that {testthat} processes the shiny code.<\/p>\n        <p>Rendering React components requires that the target rendering div exists in the DOM before the React app is called. This required using a dedicated shiny module and a uiOutput to create a slight delay between the main UI being rendered and the React javascript being processed.<\/p>\n      <\/div>\n    <\/div><\/div>\n  <div id=\"lzwjq-pkg\" style=\"grid-area: pkg; padding-right: 20px\"><div class=\"about_pkg\">\n      <div class=\"ui raised segment\" style=\"height: 100%\">\n        <a class=\"ui green ribbon label\">Packages used<\/a>\n        <div class=\"about_pkg_cont\"><span>shiny<\/span><span>shiny.semantic<\/span><span>shinyjs<\/span><span>shinydisconnect<\/span><span>dplyr<\/span><span>ids<\/span><span>stringr<\/span><span>leaflet<\/span><span>leaflet.extras<\/span><span>V8<\/span><span>sass<\/span><span>reactR<\/span><\/div>\n      <\/div>\n    <\/div><\/div>\n<\/div><\/div>\n  <div class=\"actions\">\n    <div class=\"ui button positive\">OK<\/div>\n  <\/div>\n<\/div>\n<script>\n        Shiny.initSemanticModal('welcome-modal')\n      <\/script>\n      \n<script>$('#welcome-modal').modal('attach events', '#info-button', 'show')<\/script>",
+      "deps": [
+
+      ]
+    },
+    "react-app_ui": {
+      "html": "<style>#mainmap {\n  height: 100vh !important;\n}\n\n#search_button {\n  position: absolute !important;\n  top: 60px;\n  right: 11px;\n  z-index: 2;\n  background-color: #15354a;\n  color: #a6d5e0;\n}\n\n@media only screen and (max-width: 450px) {\n  #search_button {\n    transform: scale(0.9);\n    top: 160px;\n  }\n}\n\n#info-button {\n  cursor: pointer;\n  position: absolute !important;\n  top: 25px;\n  left: 35px;\n  z-index: 5;\n  transform: scale(2);\n}\n\n@media only screen and (max-width: 700px) {\n  #info-button {\n    transform: scale(1.75);\n    top: 25px;\n    left: 25px;\n  }\n}\n\n@media only screen and (max-width: 450px) {\n  #info-button {\n    transform: scale(1.5);\n    top: 15px;\n    left: 15px;\n  }\n}\n\n#info-button .icon {\n  color: #a6d5e0;\n}\n\n#welcome-modal .icon {\n  color: #15354a;\n}\n\n#welcome-modal .header {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n}\n\n.about_title {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.about_title p {\n  max-width: 80ch;\n}\n\n.about_desc {\n  height: 100%;\n  padding-left: 2em;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.about_desc p {\n  max-width: 60ch;\n}\n\n.about_pkg {\n  padding: 0 2em;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.about_pkg span {\n  font-weight: bold;\n}\n\n.about_pkg_cont {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25em;\n}\n\n@media only screen and (max-width: 768px) {\n  .about_pkg_cont {\n    padding-bottom: 1em;\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  .about_pkg_cont span::after {\n    content: \", \";\n  }\n  .about_pkg_cont::last-child::after {\n    content: \"\";\n  }\n}\n\n.about_extra {\n  padding: 0 2em;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.about_extra p {\n  max-width: 80ch;\n}\n\n.ships {\n  position: absolute;\n  height: 100vh !important;\n  width: 100vw;\n}\n\n.ships_title {\n  position: absolute;\n  top: 15px;\n  left: clamp(50px, 11vw, 100px);\n  border: solid #15354a 1px;\n  border-radius: 1em;\n  background-color: white;\n  color: #15354a;\n  padding: 1em 2em;\n  box-shadow: 0 3.9px 4.6px rgba(0, 0, 0, 0.08), 0 12.3px 8.4px rgba(0, 0, 0, 0.056), 0 18.8px 19.2px rgba(0, 0, 0, 0.037), 0 22px 40px rgba(0, 0, 0, 0.019);\n  z-index: 2;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.ships_title h3 {\n  font-size: clamp(1.2em, 3vw, 1.4em);\n}\n\n@media only screen and (max-width: 700px) {\n  .ships_title {\n    top: 10px;\n    right: 75px;\n    left: 75px;\n    flex-direction: row;\n    gap: 1em;\n  }\n  .ships_title h3 {\n    margin-bottom: 0;\n  }\n}\n\n@media only screen and (max-width: 450px) {\n  .ships_title {\n    top: 5px;\n    right: 60px;\n    left: 60px;\n    gap: 0.5em;\n    padding: 1em .25em;\n  }\n  .ships_title h3 {\n    margin-bottom: 0;\n    font-size: clamp(0.75em, 3vw, 1.1em);\n  }\n}\n\n.ships_map {\n  position: absolute;\n  inset: 0;\n  height: 100vh !important;\n  z-index: 1;\n}\n\n.ships_map > div {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: center;\n  align-items: center;\n}\n\n@media only screen and (max-width: 900px) {\n  .ships_map > div {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n  }\n}\n\n.ships_stats {\n  position: absolute;\n  top: 25px;\n  right: 50px;\n  left: 40%;\n  z-index: 2;\n  margin: 0 1em;\n  padding: 0 1em;\n}\n\n.ships_stats .header {\n  text-align: center;\n  font-size: clamp(1em, 2vw, 1.6em) !important;\n  color: #15354a;\n}\n\n.ships_stats .header span {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25em;\n}\n\n.ships_stats .header span > div {\n  cursor: pointer;\n}\n\n.ships_stats .card {\n  border: solid #15354a 1px !important;\n  border-radius: 1em !important;\n  box-shadow: 0 3.9px 4.6px rgba(0, 0, 0, 0.08), 0 12.3px 8.4px rgba(0, 0, 0, 0.056), 0 18.8px 19.2px rgba(0, 0, 0, 0.037), 0 22px 40px rgba(0, 0, 0, 0.019);\n}\n\n@media only screen and (max-width: 700px) {\n  .ships_stats {\n    top: 70px;\n    left: 25px;\n    right: 35px;\n  }\n}\n\n@media only screen and (max-width: 450px) {\n  .ships_stats {\n    left: 0px;\n    right: 0px;\n    margin: 0;\n  }\n  .ships_stats .header {\n    text-align: center;\n    font-size: clamp(0.8em, 3vw, 1.2em);\n  }\n}\n\n#ships_map_react {\n  background-color: whitesmoke;\n  position: absolute;\n  bottom: 25px;\n  right: 25px;\n  padding: 0.75em 2em;\n  z-index: 2;\n  border: solid #15354a 1px;\n  border-radius: 1em;\n  width: auto;\n  min-width: 25%;\n  box-shadow: 0 3.9px 4.6px rgba(0, 0, 0, 0.08), 0 12.3px 8.4px rgba(0, 0, 0, 0.056), 0 18.8px 19.2px rgba(0, 0, 0, 0.037), 0 22px 40px rgba(0, 0, 0, 0.019);\n}\n\n.stats {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n\n.stats_meters {\n  text-align: center;\n  text-decoration: underline;\n  transform: scale(1.25);\n}\n\n.stats_vessel {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n#react-search {\n  position: absolute;\n  inset: 25% 50%;\n  z-index: -1;\n}\n\n#react-search .active {\n  z-index: 2;\n  background-color: black;\n}\n\n.open-portal {\n  position: absolute;\n}\n\n.open-portal-over {\n  cursor: zoom-out;\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 1999;\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n.open-portal-main {\n  margin: 1em;\n  padding: 1em;\n  color: white;\n  position: fixed;\n  top: 10%;\n  left: 5%;\n  right: 5%;\n  bottom: 5%;\n  min-height: 25vh;\n  z-index: 2000;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n@media only screen and (max-width: 600px) {\n  .open-portal-main {\n    top: 5%;\n    left: 0;\n    right: 0;\n  }\n  .open-portal-main h2, .open-portal-main h3, .open-portal-main span {\n    transform: scale(0.8);\n  }\n}\n\n.open-portal-top {\n  position: relative;\n  top: 10px;\n  left: 0px;\n  right: 0px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  margin-bottom: 0.9em;\n}\n\n.open-portal-cont {\n  overflow-y: scroll;\n  width: 100%;\n  height: 100%;\n  padding-top: 2em;\n}\n\n.open-portal-cont-item {\n  cursor: pointer;\n  min-height: 10vh;\n  background-color: white;\n  color: #15354a;\n  border: solid #a6d5e0 1px;\n  border-radius: 0.5em;\n  padding: 1em 2em;\n  margin: 0.5em;\n}\n\n.search_item {\n  display: grid;\n  grid-template-columns: 25% 75%;\n  gap: 1em;\n}\n\n.search_item_left {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n\n.search_item_left h3 {\n  font-weight: bold;\n}\n\n.search_item_right {\n  display: grid;\n  grid-template-columns: 65% 35%;\n}\n\n.search_item_right .general {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.25em;\n}\n\n.search_item_right .info {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n}\n<\/style>\n<script defer type=\"text/javascript\">var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i[\"return\"]) _i[\"return\"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError(\"Invalid attempt to destructure non-iterable instance\"); } }; }();\n\nfunction ReactPortal(_ref) {\n     var open = _ref.open,\n         children = _ref.children,\n         onClose = _ref.onClose,\n         div_class = _ref.div_class;\n     React.useEffect(function () {\n          if (open) { document.body.style.overflow = 'hidden';\n          }if (!open) { document.body.style.overflow = 'unset';\n          }\n     }, [open]);if (!open) return null;var cl0 = div_class;return ReactDOM.createPortal(React.createElement(\n          'div',\n          { 'class': cl0 },\n          '                ',\n          React.createElement('div', { 'class': cl0 + '-over', onClick: onClose }),\n          '                  ',\n          React.createElement( 'div', { 'class': cl0 + '-main' }, '                      ', children, '                  '\n          ),\n          '              '\n     ), document.getElementById('shiny-react-portal'));\n};function SearchItem(_ref2) {\n     var item = _ref2.item;\n     return React.createElement(\n          'div',\n          { 'class': 'search_item' },\n          '                ',\n          React.createElement( 'div', { 'class': 'search_item_left' }, '                    ', React.createElement( 'h3', null, item.name ), '           ', React.createElement( 'span', null, item.date ), '                    '\n          ),\n          '                  ',\n          React.createElement( 'div', { 'class': 'search_item_right' }, '                    ', React.createElement( 'div', { 'class': 'general' }, '             ', React.createElement( 'span', null, 'UID: ', item.uid ), '             ', React.createElement( 'span', null, 'Distance: ', item.distance ), '             ', React.createElement( 'span', null, 'Dimensions: ', item.length, ' X ', item.width ), '                      ' ), '                      ', React.createElement( 'div', { 'class': 'info' }, '                        ', React.createElement( 'span', null, 'Speed: ', item.speed, ' ' ), '             ', React.createElement( 'span', null, 'Course: ', item.course, ' ' ), '             ', React.createElement( 'span', null, 'Heading: ', item.heading, ' ' ), '                      ' ), '                  '\n          ),\n          '              '\n     );\n}function SearchArea(_ref3) {\n     var searchResults = _ref3.searchResults,\n         setSearchResults = _ref3.setSearchResults,\n         handleItemClick = _ref3.handleItemClick;\n     return React.createElement(\n          'div',\n          { 'class': 'open-portal-cont' },\n          '                  ',\n          searchResults && Object.keys(searchResults).map(function (code, index) { var result = searchResults[code];if (index == 0) { console.log('First Result');console.log(result); }return React.createElement( 'div', { 'class': 'open-portal-cont-item', onClick: function onClick() { return handleItemClick(result.uid); }, key: code }, '                                  ', React.createElement(SearchItem, { item: result }), '               ' );\n          }),\n          '                         '\n     );\n}function ReactMain() {\n     var _React$useState = React.useState('Cargo'),\n         _React$useState2 = _slicedToArray(_React$useState, 2),\n         selType = _React$useState2[0],\n         setSelType = _React$useState2[1];\n\n     var _React$useState3 = React.useState(null),\n         _React$useState4 = _slicedToArray(_React$useState3, 2),\n         selVessel = _React$useState4[0],\n         setSelVessel = _React$useState4[1];\n\n     var _React$useState5 = React.useState(null),\n         _React$useState6 = _slicedToArray(_React$useState5, 2),\n         selDistance = _React$useState6[0],\n         setSelDistance = _React$useState6[1];\n\n     var _React$useState7 = React.useState({}),\n         _React$useState8 = _slicedToArray(_React$useState7, 2),\n         records = _React$useState8[0],\n         setRecords = _React$useState8[1];\n\n     var _React$useState9 = React.useState(false),\n         _React$useState10 = _slicedToArray(_React$useState9, 2),\n         showSearch = _React$useState10[0],\n         setShowSearch = _React$useState10[1];\n\n     var _React$useState11 = React.useState(null),\n         _React$useState12 = _slicedToArray(_React$useState11, 2),\n         searchResults = _React$useState12[0],\n         setSearchResults = _React$useState12[1];\n\n     var _React$useState13 = React.useState(''),\n         _React$useState14 = _slicedToArray(_React$useState13, 2),\n         searchText = _React$useState14[0],\n         setSearchText = _React$useState14[1];\n\n     var landRemoved = React.useRef(false);Shiny.addCustomMessageHandler(\"main_handler\", function (message) {\n          console.log('test_handler triggered w/ message');console.log(message);if (message.type) { console.log('Type Sent');var t0 = message.type;setSelType(t0);\n          }if (message.distance) { var distance0 = message.distance;var name0 = message.name;var r0 = message.records;console.log('Distance Records recieved');console.log('Distance: ' + distance0);console.log(r0);setSelVessel(name0);setSelDistance(distance0);setRecords(r0);\n          }if (message.remove) { var div0 = message.remove;var rem0 = landRemoved.current;if (!rem0) { console.log('Removing ' + div0 + ' registered');var elem0 = document.getElementById(div0);elem0.remove();landRemoved.current = true; }\n          }if (message.show) { setShowSearch(true);\n          }if (message.no_results) { setSearchResults(null);\n          }if (message.results) { console.log('Results');var res0 = message.results;console.log(res0);setSearchResults(res0);\n          }\n     });React.useEffect(function () {\n          console.log('SearchArea text');console.log(searchText);if (showSearch) { var value0 = { type: 'search_input', text: searchText, nonce: Math.random() };Shiny.setInputValue(\"search_input\", value0);\n          } else { setSearchText('');\n          }\n     }, [searchText, showSearch]);function handleItemClick(code) {\n          console.log('handleItemClick w/ code: ' + code);setShowSearch(false);var value0 = { type: 'item_clicked', code: code, nonce: Math.random() };Shiny.setInputValue(\"search_clicked\", value0);\n     }return React.createElement(\n          'div',\n          { 'class': 'stats' },\n          '                ',\n          selDistance && React.createElement( 'div', { 'class': 'stats_meters' }, '                          ', React.createElement( 'h4', null, selDistance, ' Meters' ), '                      '\n          ),\n          '                  ',\n          Object.keys(records).length > 0 && React.createElement( 'div', { 'class': 'stats_vessel' }, '                        ', React.createElement( 'span', null, selType, ' - ', selVessel ), '             ', React.createElement( 'span', null, records.destination[0] ), '                        '\n          ),\n          '                  ',\n          React.createElement( ReactPortal, { open: showSearch, onClose: function onClose() { return setShowSearch(false); }, div_class: 'open-portal' }, '                      ', React.createElement( 'div', { 'class': 'open-portal-top' }, '                        ', React.createElement( 'h2', null, 'Search for \"', selType, '\" Ships' ), '                        ', React.createElement('input', { type: 'text', onChange: function onChange(e) { return setSearchText(e.target.value); } }), '                      ' ), '                      ', React.createElement(SearchArea, { searchResults: searchResults, setSearchResults: setSearchResults, handleItemClick: handleItemClick }), '                    '\n          ),\n          '                '\n     );\n}ReactDOM.render(React.createElement(ReactMain, null), document.getElementById('ships_map_react'));<\/script>",
+      "deps": [
+
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

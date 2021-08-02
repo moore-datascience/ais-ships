@@ -1,0 +1,11 @@
+name: AIS-Demo
+title: Ships-AIS
+username:
+account: ianmoore
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4443798
+bundleId: 4878239
+url: https://ianmoore.shinyapps.io/AIS-Demo/
+when: 1627864993.74454
+lastSyncTime: 1627864993.74455

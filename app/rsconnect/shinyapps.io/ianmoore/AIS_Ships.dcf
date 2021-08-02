@@ -1,0 +1,11 @@
+name: AIS_Ships
+title: Ships-AIS2
+username:
+account: ianmoore
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4441500
+bundleId: 4875619
+url: https://ianmoore.shinyapps.io/AIS_Ships/
+when: 1627759997.33884
+lastSyncTime: 1627759997.33886

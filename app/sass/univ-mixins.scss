@@ -1,0 +1,416 @@
+
+
+
+
+
+@mixin mq($size) {
+  @media only screen and (max-width: $size) {
+    @content; 
+  }
+}
+
+
+
+@mixin flex(
+  $type: null,
+  $jc: null,
+  $ac: null,
+  $ji: null,
+  $ai: null,
+  $wrap: null,
+  $gap: null
+  ){
+  
+  display: flex;
+  
+  @if $type {
+    
+    flex-direction: $type;
+  
+  }
+  
+  @if $jc {
+    justify-content: $jc;
+  }
+  
+  @if $ac {
+    align-content: $ac;
+  }
+  
+  @if $ji {
+    justify-items: $ji;
+  }
+  
+  @if $ai {
+    align-items: $ai;
+  }
+  
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+  
+  @if $gap {
+    gap: $gap;
+  }
+  
+}
+
+
+
+
+
+@mixin bg_img(
+  $img,
+  $bg-color: null,
+  $repeat: no-repeat,
+  $blend: null,
+  $size: cover,
+  $pos: center center
+  ) {
+  
+  background-image: url($img);
+  background-repeat: $repeat;
+  
+  @if $blend {
+    
+    background-blend-mode: $blend;
+    
+  }
+  
+  @if $bg-color {
+    
+    background-color: $bg-color;
+    
+  }
+  
+  background-size: $size;
+  background-position: $pos;
+  
+  
+}
+
+
+
+
+@mixin key-frames($frames,$name) {
+  
+  @keyframes #{$name} {
+
+    @each $name,$map in $frames {
+  
+      #{$name}% {
+        background-color: map-get($map, background-color);
+        clip-path: map-get($map, clip-path);
+      }
+  
+    }
+  
+  }
+  
+  @-webkit-keyframes #{$name} {
+
+    @each $name,$map in $frames {
+  
+      #{$name}% {
+        background-color: map-get($map, background-color);
+        clip-path: map-get($map, clip-path);
+      }
+  
+    }
+  
+  }
+
+}
+
+@mixin anim($name, $anim-time: 30s, $loop: infinite) {
+  
+  animation: $name $anim-time $loop;
+  -webkit-animation: $name $anim-time $loop; 
+  
+}
+    
+
+
+
+
+// 3.1.21
+@mixin font($name: null,$size: null){
+  
+  
+  @if $name {
+    
+    @if $name=='mukta' {
+      
+      font-family: 'Mukta', sans-serif;
+      
+    }
+    
+    @if $name=='sm' {
+      
+      font-family: 'Shippori Mincho', serif;
+      
+    }
+  
+  }
+  
+  @if $size {
+    
+    font-size: $size;
+    
+  }
+  
+}
+
+@mixin font-clamp($name,$sm,$vw,$lg){
+  
+  @if $name {
+    
+    @include font($name)
+  
+  }
+    
+  font-size: clamp($sm,$vw,$lg);
+  
+}
+
+
+
+
+// 3.1.21
+@mixin param-mq(
+  $name,
+  $val: null,
+  $val-md: null, 
+  $val-sm: null,
+  $val-xs: null,
+  $md-lim: 900px, // var(--md-break), //
+  $sm-lim: 600px, // var(--sm-break), //
+  $xs-lim: 500px   // var(--xs-break) //
+  ){
+  
+  
+  @if $val {
+    
+    #{$name}: $val;
+    
+  }
+  
+  @if $val-md {
+    
+    @include mq($md-lim){
+      
+     #{$name}: $val-md;
+     
+    }
+    
+  }
+  
+  @if $val-sm {
+    
+    @include mq($sm-lim){
+      
+     #{$name}: $val-sm;
+     
+    }
+    
+  }
+  
+  @if $val-xs {
+    
+    @include mq($xs-lim){
+      
+     #{$name}: $val-xs;
+     
+    }
+    
+  }
+  
+}
+
+
+
+
+
+// 3.8.21
+@mixin import_fonts($fonts){
+
+  $ggf-url: 'https://fonts.googleapis.com/css2?family=';
+
+  @each $name,$font_url in $fonts {
+
+    @import url('#{$ggf-url$font_url}');
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+@mixin ps(
+  $loc: before, 
+  $content: '', 
+  $pos: absolute,
+  $top: 0,
+  $bottom: 0,
+  $left: 0,
+  $right: 0
+  ) {
+  
+  position: relative;
+  
+  &::#{$loc} {
+    content: $content;
+    position: $pos;
+    top: $top;
+    bottom: $bottom;
+    left: $left;
+    right: $right;
+    @content;
+  }
+  
+}
+
+
+
+
+
+@mixin font-3(
+  $name: null,
+  $size: null,
+  $size-md: null, 
+  $size-sm: null,
+  $md-lim: 900px, 
+  $sm-lim: 600px
+  ){
+  
+  
+  @if $name {
+    
+    @include font($name)
+  
+  }
+  
+  @if $size {
+    
+    font-size: $size;
+    
+  }
+  
+  @if $size-md {
+    
+    @include mq($md-lim){
+      
+     font-size: $size-md;
+     
+    }
+    
+  }
+  
+  @if $size-sm {
+    
+    @include mq($sm-lim){
+      
+     font-size: $size-sm;
+     
+    }
+    
+  }
+  
+}
+
+
+
+// misc
+@mixin uppercase {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+@mixin hover-lift-op($op: 1,$box-op: 0.2,$box-op-bef: 0.4) {
+  transition: transform 350ms ease-in-out;
+  box-shadow: 0 0.25em 0.5em 0 rbgs(black, $box-op);
+  
+  @include ps($loc: before){
+    box-shadow: 0 0 1.25em 0 rbgs(black, $box-op-bef);
+    transition: transform 350ms ease-in-out;
+    opacity: 0;
+  }
+  
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+    
+    &::before {
+      opacity: $op;
+    }
+    
+  }
+  
+}
+
+
+@mixin hover-lift() {
+  
+  transition: transform 250ms ease-in-out;
+  
+  &:hover,
+  &:focus {
+    
+    transform: scale(1.05);
+    
+  }
+  
+}
+
+
+// from 
+// https://dev.to/devang/the-master-guide-to-smooth-realistic-shadows-in-css-463p
+
+@mixin real-box-shadow() {
+  
+  box-shadow:
+    0 3.9px 4.6px rgba(0, 0, 0, 0.08),
+    0 12.3px 8.4px rgba(0, 0, 0, 0.056),
+    0 18.8px 19.2px rgba(0, 0, 0, 0.037),
+    0 22px 40px rgba(0, 0, 0, 0.019);
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

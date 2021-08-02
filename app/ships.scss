@@ -133,7 +133,7 @@ $app-color2: #a6d5e0;
           content: ", ";
         }
         
-        &::last-child::after {
+        &:last-child::after {
           content: "";
         }
         
